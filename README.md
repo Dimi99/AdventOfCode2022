@@ -1,3 +1,5 @@
 # AdventOfCode2022
-u cute \n
+u cute
+
+
 no u cute
