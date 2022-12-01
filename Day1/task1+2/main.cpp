@@ -23,12 +23,9 @@ public:
                 food_list.push_back(calorie);
                 continue;
             }
-
             individuals.emplace(ElveCommunity::Elve(food_list));
             food_list.clear();
-
         }
-
     }
 
     struct Elve {
@@ -38,15 +35,15 @@ public:
         {
             total_calories_ = std::accumulate(foods_.begin(), foods_.end(), 0);
         }
-        void add_calorie(int food){foods_.push_back(food);}
-        void calc_calories(){total_calories_ = std::accumulate(foods_.begin(), foods_.end(), 0);}
         int total_calories () const {return total_calories_;}
         bool operator<(const Elve& elve) const
-        {return this->total_calories() < elve.total_calories();}
+        {return this->total_calories_ < elve.total_calories_;}
 private:
         int total_calories_;
         std::vector<int> foods_;
     };
+
+
 Elve max_elve(){return individuals.top();}
 void pop(){individuals.pop();}
 
@@ -63,7 +60,7 @@ int main() {
     // Top 3 Elves
     auto result = 0;
     for(int i = 0; i <=2; ++i) {
-         result += elves.max_elve().total_calories();
+        result += elves.max_elve().total_calories();
         elves.pop();
     }
     std::cout << "Result: " << result << std::endl;
