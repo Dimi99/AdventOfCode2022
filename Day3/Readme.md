@@ -1,4 +1,4 @@
---- Day 3: Rucksack Reorganization ---
+# --- Day 3: Rucksack Reorganization ---
 
 One Elf has the important job of loading all of the rucksacks with supplies for the jungle journey. Unfortunately, that Elf didn't quite follow the packing instructions, and so a few items now need to be rearranged.
 
@@ -10,12 +10,12 @@ The list of items for each rucksack is given as characters all on a single line.
 
 For example, suppose you have the following list of contents from six rucksacks:
 
-vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw
+vJrwpWtwJgWrhcsFMMfFFhFp  
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL  
+PmmdzqPrVvPwwTWBwg  
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn  
+ttgJtRGJQctTZtZT  
+CrZsJsPPZsGzwwsLwLmpwMDw  
 
     The first rucksack contains the items vJrwpWtwJgWrhcsFMMfFFhFp, which means its first compartment contains the items vJrwpWtwJgWr, while the second compartment contains the items hcsFMMfFFhFp. The only item type that appears in both compartments is lowercase p.
     The second rucksack's compartments contain jqHRNqRjqzjGDLGL and rsFMfFZSrLrFZsSL. The only item type that appears in both compartments is uppercase L.
@@ -33,8 +33,7 @@ In the above example, the priority of the item type that appears in both compart
 
 Find the item type that appears in both compartments of each rucksack. What is the sum of the priorities of those item types?
 
-Your puzzle answer was 7785.
---- Part Two ---
+# --- Part Two ---
 
 As you finish identifying the misplaced items, the Elves come to you with another issue.
 
@@ -46,15 +45,15 @@ Additionally, nobody wrote down which item type corresponds to each group's badg
 
 Every set of three lines in your list corresponds to a single group, but each group can have a different badge item type. So, in the above example, the first group's rucksacks are the first three lines:
 
-vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
+vJrwpWtwJgWrhcsFMMfFFhFp  
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL  
+PmmdzqPrVvPwwTWBwg  
 
 And the second group's rucksacks are the next three lines:
 
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn  
+ttgJtRGJQctTZtZT  
+CrZsJsPPZsGzwwsLwLmpwMDw  
 
 In the first group, the only item type that appears in all three rucksacks is lowercase r; this must be their badges. In the second group, their badge item type must be Z.
 
