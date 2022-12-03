@@ -17,14 +17,14 @@ For example, suppose the Elves finish writing their items' Calories and end up w
 3000  
 4000   
   
-5000
-6000
-
-7000
-8000
-9000
-
-10000
+5000  
+6000  
+  
+7000  
+8000  
+9000  
+  
+10000  
 
 This list represents the Calories of the food carried by five Elves:
 
