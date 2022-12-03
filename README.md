@@ -4,4 +4,4 @@ Advent of Code is an Advent calendar of small programming puzzles for a variety 
 
 Courtesy to [Eric Wastl](http://was.tl). The creator of Advent of Code.
 
-If you'd like to support Advent of Code, you can do so indirectly by helping to [share](https://adventofcode.com/) it with others, or directly via [Paypal](https://adventofcode.com/2022/support/paypal).
+If you'd like to support Advent of Code, you can do so indirectly by helping to [share](https://adventofcode.com/) it with others, or directly via [Eric's Paypal](https://adventofcode.com/2022/support/paypal).
