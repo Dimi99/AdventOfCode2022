@@ -54,7 +54,7 @@ int main() {
 
     std::ifstream input(FILEPATH);
     auto sections = read(input);
-    // First part
+    
     int count1{0};
     int count2{0};
 
@@ -66,8 +66,6 @@ int main() {
     });
 
     std::cout << count1 << "\n" << count2 << "\n";
-
-
 
     return 0;
 }
