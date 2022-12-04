@@ -15,13 +15,21 @@ public:
     {}
     uint from_,to_;
 };
-
+// First Task
 bool overlap(const std::pair<Section,Section> &section){
     return ((section.first.from_ <=  section.second.from_ && section.first.to_ >= section.second.to_)
           ||(section.second.from_ <= section.first.from_  && section.second.to_ >= section.first.to_));
 }
 
-std::vector<std::pair<Section,Section>> read1(ifstream &in){
+// Second Task
+bool intersect(const std::pair<Section,Section> &section){
+    return ((section.first.from_ <= section.second.from_ && section.first.to_ >= section.second.from_)
+          ||(section.second.from_ <= section.first.from_ && section.second.to_ >= section.first.from_));
+}
+
+
+
+std::vector<std::pair<Section,Section>> read(ifstream &in){
 
     std::vector<std::pair<Section,Section>> out;
     char bufX[3];
@@ -36,8 +44,8 @@ std::vector<std::pair<Section,Section>> read1(ifstream &in){
         in.getline(bufO,sizeof(bufO),'\n');
         if(bufX[0] == '\0')
             continue;
-        out.emplace_back(Section(atoi(bufX), atoi(bufY)),Section(atoi(bufZ), atoi(bufO)));
 
+        out.emplace_back(Section(atoi(bufX), atoi(bufY)),Section(atoi(bufZ), atoi(bufO)));
     }
     return out;
 }
@@ -45,13 +53,19 @@ std::vector<std::pair<Section,Section>> read1(ifstream &in){
 int main() {
 
     std::ifstream input(FILEPATH);
-    auto sections = read1(input);
-    int count{0};
+    auto sections = read(input);
+    // First part
+    int count1{0};
+    int count2{0};
+
     std::for_each(sections.begin(), sections.end(), [&](std::pair<Section,Section> &section){
-        count += (overlap(section));
+        // First Task
+        count1 += (overlap(section));
+        // Second Task
+        count2 += (intersect(section));
     });
 
-    std::cout << count << "\n";
+    std::cout << count1 << "\n" << count2 << "\n";
 
 
 
