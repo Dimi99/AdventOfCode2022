@@ -1,0 +1,3 @@
+/home/dimi/Desktop/AdventOfCode2022/Day5/Dimi_C++/cmake-build-debug/CMakeFiles/Dimi_C__.dir
+/home/dimi/Desktop/AdventOfCode2022/Day5/Dimi_C++/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/dimi/Desktop/AdventOfCode2022/Day5/Dimi_C++/cmake-build-debug/CMakeFiles/rebuild_cache.dir
