@@ -1,4 +1,4 @@
---- Day 6: Tuning Trouble ---
+# --- Day 6: Tuning Trouble ---
 
 The preparations are finally complete; you and the Elves leave camp on foot and begin to make your way toward the star fruit grove.
 
@@ -16,7 +16,7 @@ The device will send your subroutine a datastream buffer (your puzzle input); yo
 
 For example, suppose you receive the following datastream buffer:
 
-mjqjpqmgbljsphdztnvjfqwrcgsmlb
+    mjqjpqmgbljsphdztnvjfqwrcgsmlb
 
 After the first three characters (mjq) have been received, there haven't been enough characters received yet to find the marker. The first time a marker could occur is after the fourth character is received, making the most recent four characters mjqj. Because j is repeated, this isn't a marker.
 
@@ -31,8 +31,7 @@ Here are a few more examples:
 
 How many characters need to be processed before the first start-of-packet marker is detected?
 
-Your puzzle answer was 1965.
---- Part Two ---
+# --- Part Two ---
 
 Your device's communication system is correctly detecting packets, but still isn't working. It looks like it also needs to look for messages.
 
