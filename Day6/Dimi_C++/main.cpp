@@ -23,18 +23,14 @@ int read(ifstream &in){
             return i+1;
     }
 
-    return 0;
+    return -1;
 
 }
-// b l j s p h d z t n v j f q
-// x x x x x x x x x x
+
 int main() {
 
     std::ifstream input(FILEPATH);
     std::cout << read(input);
-
-
-
 
     return 0;
 }
