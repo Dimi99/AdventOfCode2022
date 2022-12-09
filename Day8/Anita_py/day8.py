@@ -7,7 +7,7 @@ with open('input.txt') as f:
     for i in range(99):
         trees_grid[i] = list(map(int, list(f.readline().strip())))
     n = 0
-    for i, row in enumerate(trees_grid, ):
+    for i, row in enumerate(trees_grid):
         for j, col in enumerate(row):
             tree = trees_grid[i, j]
             n1 = j if np.argwhere((trees_grid[i, :j] < tree) == 0).size == 0\
