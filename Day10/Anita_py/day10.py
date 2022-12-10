@@ -18,7 +18,7 @@ with open('input.txt') as f:
     smaller_cycles = [cycles[i*40:(i+1)*40] for i in range((len(cycles) + 40 - 1) // 40)]
     for sm_cycle in smaller_cycles:
         for i, cycle in enumerate(sm_cycle, 1):
-            crt += '#' if sprite[i-1] == '#' else '.'
+            crt += ' 0 ' if sprite[i-1] == '#' else '   '
             if cycle.isdigit():
                 num_hash = sprite.count('#')
                 sprite = '#' * (3 - num_hash) + sprite
