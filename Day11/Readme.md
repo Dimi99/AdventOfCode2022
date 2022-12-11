@@ -6,33 +6,33 @@ To get your stuff back, you need to be able to predict where the monkeys will th
 
 You take some notes (your puzzle input) on the items each monkey currently has, how worried you are about those items, and how the monkey makes decisions based on your worry level. For example:
 
-Monkey 0:
-  Starting items: 79, 98
-  Operation: new = old * 19
-  Test: divisible by 23
-    If true: throw to monkey 2
-    If false: throw to monkey 3
-
-Monkey 1:
-  Starting items: 54, 65, 75, 74
-  Operation: new = old + 6
-  Test: divisible by 19
-    If true: throw to monkey 2
-    If false: throw to monkey 0
-
-Monkey 2:
-  Starting items: 79, 60, 97
-  Operation: new = old * old
-  Test: divisible by 13
-    If true: throw to monkey 1
-    If false: throw to monkey 3
-
-Monkey 3:
-  Starting items: 74
-  Operation: new = old + 3
-  Test: divisible by 17
-    If true: throw to monkey 0
-    If false: throw to monkey 1
+  Monkey 0:  
+    Starting items: 79, 98  
+    Operation: new = old * 19  
+    Test: divisible by 23  
+      If true: throw to monkey 2  
+      If false: throw to monkey 3  
+  
+  Monkey 1:  
+    Starting items: 54, 65, 75, 74  
+    Operation: new = old + 6  
+    Test: divisible by 19  
+      If true: throw to monkey 2  
+      If false: throw to monkey 0  
+  
+  Monkey 2:  
+    Starting items: 79, 60, 97  
+    Operation: new = old * old  
+    Test: divisible by 13  
+      If true: throw to monkey 1  
+      If false: throw to monkey 3  
+  
+  Monkey 3:  
+    Starting items: 74  
+    Operation: new = old + 3  
+    Test: divisible by 17  
+      If true: throw to monkey 0  
+      If false: throw to monkey 1  
 
 Each monkey has several attributes:
 
@@ -218,7 +218,7 @@ In this example, the two most active monkeys inspected items 101 and 105 times. 
 Figure out which monkeys to chase by counting how many items they inspect over 20 rounds. What is the level of monkey business after 20 rounds of stuff-slinging simian shenanigans?
 
 Your puzzle answer was 78678.
---- Part Two ---
+# --- Part Two ---
 
 You're worried you might not ever get your items back. So worried, in fact, that your relief that a monkey's inspection didn't damage an item no longer causes your worry level to be divided by three.
 
