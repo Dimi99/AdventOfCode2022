@@ -43,6 +43,12 @@ struct Position{
 struct Map{
     std::pair<int,int> start{0,0}, end{0,0};
     std::vector<std::vector<Position>> map;
+
+    std::vector<Position>& operator[](size_t i) { return map.at(i); }
+    const std::vector<Position>& operator[](size_t i) const{ return map.at(i); }
+    std::vector<Position>& at(size_t i) { return map.at(i); }
+    const std::vector<Position>& at(size_t i) const { return map.at(i); }
+    size_t size() const{return map.size();}
 };
 
 
@@ -67,27 +73,23 @@ Map read(ifstream &in){
         for(auto a: s){
             char gradient = a;
             if(a == int('S')){
-                map.start = {map.map.size()-1,j};
+                map.start = {map.size()-1,j};
                 gradient = 'a';
             }
             else if(a == int('E')){
-                map.end = {map.map.size()-1,j};
+                map.end = {map.size()-1,j};
                 gradient = 'z';
             }
-            map.map.at(map.map.size()-1).emplace_back(map.map.size()-1,j,gradient);
-
+            map.at(map.size()-1).emplace_back(map.size()-1,j,gradient);
 
             //check for left & right
             if(j > 0)
-                map.map.at(map.map.size()-1).at(j).check_adjacency(map.map.at(map.map.size()-1).at(j-1));
+                map.at(map.size()-1).at(j).check_adjacency(map.at(map.size()-1).at(j-1));
             //check for top & bottom
-            if(map.map.size()-1 > 0)
-                map.map.at(map.map.size()-1).at(j).check_adjacency(map.map.at(map.map.size()-2).at(j));
-
-
+            if(map.size()-1 > 0)
+                map.at(map.size()-1).at(j).check_adjacency(map.at(map.size()-2).at(j));
             ++j;
         }
-
         std::memset(&(bufX[0]), 0, arraySize);
     }
 
@@ -123,17 +125,17 @@ std::vector<size_t> a_star(const Map& map){
     std::vector<size_t> popped;
     std::vector<DjikstraPoint> points;
 
-    size_t end_id = map.map[map.end.first][map.end.second].id(map.map);
-    size_t start_id = map.map[map.start.first][map.start.second].id(map.map);
+    size_t end_id = map[map.end.first][map.end.second].id(map.map);
+    size_t start_id = map[map.start.first][map.start.second].id(map.map);
 
-    points.reserve(map.map.size() * map.map[0].size());
+    points.reserve(map.size() * map[0].size());
 
-    for(int i = 0; i < map.map.size(); ++i){
-        for(int j = 0; j < map.map[0].size(); ++j) {
+    for(int i = 0; i < map.size(); ++i){
+        for(int j = 0; j < map[0].size(); ++j) {
             double res{0.};
             res = std::sqrt(std::pow(map.end.first - i, 2) + std::pow(map.end.second - j, 2));
             auto heur = static_cast<float>(res);
-            points.emplace_back(map.map[i][j].id(map.map), std::numeric_limits<float>::max(), heur, std::numeric_limits<int>::max());
+            points.emplace_back(map[i][j].id(map.map), std::numeric_limits<float>::max(), heur, std::numeric_limits<int>::max());
         }
     }
 
@@ -160,7 +162,7 @@ std::vector<size_t> a_star(const Map& map){
         popped.push_back(u.id_);
         num_visited++;
 
-        Position curr = map.map.at(u.id_/map.map[0].size()).at(u.id_%map.map[0].size());
+        Position curr = map.at(u.id_/map[0].size()).at(u.id_%map[0].size());
 
         if(u.dist_.value() == std::numeric_limits<float>::max())
             break;
@@ -168,7 +170,7 @@ std::vector<size_t> a_star(const Map& map){
         //determine neighbors
         for(auto & neighbor : curr.available){
 
-                size_t i = (neighbor.first * map.map[0].size()) + neighbor.second;
+                size_t i = (neighbor.first * map[0].size()) + neighbor.second;
 
                 if (std::any_of(popped.begin(), popped.end(), [&](const size_t &id) { return id == points.at(i).id_; }))
                     continue;
@@ -238,10 +240,9 @@ int main() {
             int temp = a_star(map).size()-1;
             if(temp < part2 && temp > 0)
                 part2 = temp;
-
         }
     }
-    //Part 2 Brute Force 
+    //Part 2 Brute Force
    std::cout << "Steps required for part 2: " << part2 << "\n";
 
 
