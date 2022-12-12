@@ -241,7 +241,7 @@ int main() {
 
         }
     }
-    //Part 2 Breadth first Search
+    //Part 2 Brute Force 
    std::cout << "Steps required for part 2: " << part2 << "\n";
 
 
