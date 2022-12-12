@@ -4,7 +4,6 @@
 #include <algorithm>
 
 #include <cstring>
-#include <cmath>
 
 #define FILEPATH "../Data.txt"
 
@@ -34,14 +33,9 @@ public:
     }
     long long int operation(long long int number){
         long long int partner = 0;
-        try {
-            partner = stoi(operation_.substr(23,operation_.size()-23));
-
-        }
-        catch (const std::invalid_argument& e) {
-           partner = number;
-        }
-
+        try {partner = stoi(operation_.substr(23,operation_.size()-23));}
+        catch (const std::invalid_argument& e) {partner = number;   }
+        //Todo
         if(operation_.substr(21,1) == "*")
             return number * partner;
         else if(operation_.substr(21,1) == "+")
@@ -50,7 +44,7 @@ public:
             throw std::invalid_argument("wrong operation");
     }
 
-    bool operator>(const Monkey& other){
+    bool operator>(const Monkey& other) const{
         return (this->items_inspected > other.items_inspected);
     }
 
@@ -105,19 +99,14 @@ void round(std::vector<Monkey>& monkeys,long long int lcm){
         for(int j = 0; j<size; ++j){
             monkey.items_inspected++;
             monkey.items_.at(0) = monkey.operation(monkey.items_.at(0));
-            //double divide = static_cast<double>(monkey.items_.at(0))/3;
-           long long int temp =  monkey.items_.at(0);
-           //if(monkey.items_.at(0) > lcm)
-           //long long int temp = monkey.items_.at(0) % lcm;
-           monkey.items_.at(0)  = monkey.items_.at(0) % lcm ;
+            long long int temp =  monkey.items_.at(0);
+            monkey.items_.at(0)  = monkey.items_.at(0) % lcm ;
 
-
-           std::cout << (monkey.items_.at(0) == temp) << "\n";
-
-            if(monkey.test(monkey.items_.at(0))) //number % test_ == 0
+            if(monkey.test(monkey.items_.at(0)))
                 monkeys.at(monkey.target_monkey_true_).items_.push_back(monkey.items_.at(0));
             else
                 monkeys.at(monkey.target_monkey_false_).items_.push_back(monkey.items_.at(0));
+
             monkey.items_.erase(monkey.items_.begin()+0);
         }
     }
@@ -132,7 +121,7 @@ int main(){
     for(Monkey& monkey: monkeys){
         lcm *= monkey.test_;
     }
-    std::cout << lcm << "\n";
+    
     for(int i = 0; i < 10000 ; ++i){
         round(monkeys,lcm);
     }
@@ -143,32 +132,8 @@ int main(){
         result *= monkeys.at(j).items_inspected;
     }
     std::cout << result << std::endl;
-    std::cout << monkeys.at(0).items_inspected << " :: " << monkeys.at(1).items_inspected<<std::endl;
 
 
 
     return 0;
 }
-
-
-/**
-* I actually didn't really know the maths but I reasoned out a working solution!
-
-But the way I did it was pretty unorthodox as well. I didn't keep track of any particular number, instead I gave every Item instance a "worryDebt" vector attribute that stored how "far away" each of the modulo are away from being divisible.
-
-For example if the monkeys would check 7, 9, and 13, and the initial worry number was 22, then it would store <7, 6>, <9, 5>, and <13, 4>.
-
-Then for every operation that's done by a monkey, the item is updated accordingly. Addition? All of the values decrease by the amount, and then get added back to the positive if they are negative. For example if a monkey did a +5;
-
-<7, 1>, <9, 0>, <13, 12> (this indeed checks out with 27)
-
-And now we know that it's divisible by 9. Well what if it multiplies by a number? I experimentally determined that the "debt" also multiplies, and then mods down. So suppose it was times 3:
-
-<7, 3>, <9, 0>, <13, 10> (this indeed checks out with 81)
-
-And the only other thing to worry about was squares. This one took a while, but I realized that the debt squares, then gets modded, and then becomes the INVERSE as it relates to the key, i.e. key - calcValue. Let's square these:
-
-<7, 5>, <9, 0>, <13, 4> (this indeed checks out with 6561)
-
-The modulus operations are just as simple as finding the correct key and checking if the number is 0. No need to keep track of any number greater than any of the modulo. I don't
-*/
