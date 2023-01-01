@@ -10,8 +10,7 @@ def manh_dist(x1, y1, x2, y2):
 with open('input.txt') as f:
     coords = [list(map(int, re.findall(r'-?\d+', line.strip()))) for line in f]
     coord_dist = {(line[0], line[1]): manh_dist(*line) for line in coords}
-
-
+    # part 1
     # col_n = list(chain.from_iterable([[line[0], line[2]] for line in coords]))
     # min_x, max_x = min(col_n), max(col_n)
     # beamers = [(line[2], line[3]) for line in coords]
@@ -26,7 +25,7 @@ with open('input.txt') as f:
     #     poss_beacons.difference_update(imposs_beacons)
     # print(len(imposs_beacons))
 
-    # solution inspired by @fmardini from Reddit
+    # part 2, solution inspired by @fmardini from Reddit
     def manh_dist_z3():
         x, y = Ints('x y')
         s = Solver()
